@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Telemetry &amp; System Benchmark Diagnostics Tool</title>
+  <link rel="stylesheet" href="{% static 'tracker/css/style.css' %}">
+</head>
+<body>
+  <div class="wrapper">
+    <header class="hero">
+      <span class="badge"><span class="dot"></span> Live Diagnostics</span>
+      <h1>Client Telemetry &amp; System Benchmark Diagnostics Tool</h1>
+      <p class="subtitle">
+        Real-time collection of hardware, network, GPU, and browser capability
+        metrics gathered directly from this session via standard Web APIs.
+      </p>
+    </header>
+
+    <section class="grid">
+
+      <!-- SYSTEM / HARDWARE -->
+      <div class="card" id="card-hardware">
+        <div class="card-header">
+          <div class="card-icon">🖥️</div>
+          <div class="card-title">System &amp; Hardware</div>
+        </div>
+        <div class="metric-row"><span class="metric-label">Platform</span><span class="metric-value pending" data-field="platform"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Architecture (hint)</span><span class="metric-value pending" data-field="architecture"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Logical CPU Cores</span><span class="metric-value pending" data-field="cpu_cores"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Device Memory (GB)</span><span class="metric-value pending" data-field="device_memory_gb"><span class="skeleton"></span></span></div>
+      </div>
+
+      <!-- GPU / WEBGL -->
+      <div class="card" id="card-gpu">
+        <div class="card-header">
+          <div class="card-icon">🎮</div>
+          <div class="card-title">GPU &amp; WebGL</div>
+        </div>
+        <div class="metric-row"><span class="metric-label">Vendor</span><span class="metric-value pending" data-field="gpu_vendor"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Renderer</span><span class="metric-value pending" data-field="gpu_renderer"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">WebGL Version</span><span class="metric-value pending" data-field="webgl_version"><span class="skeleton"></span></span></div>
+      </div>
+
+      <!-- SCREEN / DISPLAY -->
+      <div class="card" id="card-display">
+        <div class="card-header">
+          <div class="card-icon">🖼️</div>
+          <div class="card-title">Screen &amp; Display</div>
+        </div>
+        <div class="metric-row"><span class="metric-label">Resolution</span><span class="metric-value pending" data-field="resolution"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Color Depth</span><span class="metric-value pending" data-field="color_depth"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Pixel Ratio</span><span class="metric-value pending" data-field="pixel_ratio"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Orientation</span><span class="metric-value pending" data-field="orientation"><span class="skeleton"></span></span></div>
+      </div>
+
+      <!-- NETWORK -->
+      <div class="card" id="card-network">
+        <div class="card-header">
+          <div class="card-icon">📶</div>
+          <div class="card-title">Network &amp; Connection</div>
+        </div>
+        <div class="metric-row"><span class="metric-label">Effective Type</span><span class="metric-value pending" data-field="effective_type"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Downlink (Mbps)</span><span class="metric-value pending" data-field="downlink_mbps"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">RTT (ms)</span><span class="metric-value pending" data-field="rtt_ms"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Data Saver</span><span class="metric-value pending" data-field="save_data_mode"><span class="skeleton"></span></span></div>
+      </div>
+
+      <!-- BATTERY -->
+      <div class="card" id="card-battery">
+        <div class="card-header">
+          <div class="card-icon">🔋</div>
+          <div class="card-title">Battery &amp; Power</div>
+        </div>
+        <div class="metric-row"><span class="metric-label">Level</span><span class="metric-value pending" data-field="battery_level_percent"><span class="skeleton"></span></span></div>
+        <div class="progress-track"><div class="progress-fill" id="battery-bar"></div></div>
+        <div class="metric-row" style="margin-top:8px;"><span class="metric-label">Charging</span><span class="metric-value pending" data-field="is_charging"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Charging Time (s)</span><span class="metric-value pending" data-field="charging_time_sec"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Discharging Time (s)</span><span class="metric-value pending" data-field="discharging_time_sec"><span class="skeleton"></span></span></div>
+      </div>
+
+      <!-- BROWSER -->
+      <div class="card" id="card-browser">
+        <div class="card-header">
+          <div class="card-icon">🌐</div>
+          <div class="card-title">Browser Environment</div>
+        </div>
+        <div class="metric-row"><span class="metric-label">Language</span><span class="metric-value pending" data-field="language"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Timezone</span><span class="metric-value pending" data-field="timezone"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Cookies Enabled</span><span class="metric-value pending" data-field="cookie_enabled"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Do Not Track</span><span class="metric-value pending" data-field="do_not_track"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Touch Support</span><span class="metric-value pending" data-field="touch_support"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">WebRTC Supported</span><span class="metric-value pending" data-field="webrtc_supported"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Service Worker</span><span class="metric-value pending" data-field="service_worker_supported"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Canvas Hash</span><span class="metric-value pending" data-field="canvas_fingerprint_hash"><span class="skeleton"></span></span></div>
+      </div>
+
+      <!-- BENCHMARK -->
+      <div class="card" id="card-benchmark">
+        <div class="card-header">
+          <div class="card-icon">⚡</div>
+          <div class="card-title">In-Browser Benchmark</div>
+        </div>
+        <div class="metric-row"><span class="metric-label">Prime-Loop CPU Test</span><span class="metric-value pending" data-field="cpu_benchmark_ms"><span class="skeleton"></span></span></div>
+        <div class="metric-row"><span class="metric-label">Status</span><span class="metric-value" id="benchmark-status"><span class="pill warn">Running…</span></span></div>
+      </div>
+
+    </section>
+
+    <div class="send-status" id="send-status">
+      <span class="icon">⏳</span>
+      <span id="send-status-text">Gathering diagnostics and preparing to transmit…</span>
+    </div>
+
+    <footer class="note">
+      All metrics above are read directly from Web APIs exposed by your current browser session
+      (Navigator, Screen, WebGL, Network Information, Battery, and Canvas APIs) and are sent to
+      the server for logging once collection completes. No metric requires personally identifying
+      information to be entered manually.
+    </footer>
+  </div>
+
+  <script src="{% static 'tracker/js/client_tracker.js' %}"></script>
+</body>
+</html>
